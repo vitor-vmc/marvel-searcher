@@ -1,0 +1,9 @@
+<form class="search-form __full-width">
+    <mat-form-field class="__full-width" appearance="outline">
+      <mat-label>Digite o nome do heroí</mat-label>
+      <input matInput
+      [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}"
+      (input)="onSearchInput()">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+</form>
