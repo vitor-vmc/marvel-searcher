@@ -1,21 +1,33 @@
 <header class="header">
-  <img class="img" src="../../../assets/images/marvel-black-logo.jpeg" alt="Logo Marvel"/>
+  <img
+    class="img"
+    src="../../../assets/images/marvel-black-logo.jpeg"
+    alt="Logo Marvel"
+  />
 </header>
 
 <main>
-  <div class="container">
+
+    <div *ngIf="loading$ | async">
+        <app-loader></app-loader>
+    </div>
+ 
+  <div *ngIf="error$ | async" class="error">
+    <h1>Ops! Algo deu errado!</h1>
+    <p>{{ error$ | async}}</p>
+  </div>
+  <div *ngIf="!(loading$ | async) && !(error$ | async)"class="container">
     <div class="row">
       <div>
         <h1>Bem-vindo ao Marvel Searcher!</h1>
-        <p>
-          Confira dados incriveis do seu heroi Marvel favorito!
-        </p>
+        <p>Confira dados incriveis do seu heroi Marvel favorito!</p>
       </div>
       <div class="mt-20">
         <app-searcher></app-searcher>
       </div>
+      <button (click)="getCharacters()">teste api</button>
     </div>
-  </div>
+</div>
 </main>
 
 <footer class="footer">

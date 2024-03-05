@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { provideClientHydration } from '@angular/platform-browser';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { SearcherService } from './services/searcher.service';
+import { SearchRepository } from './repositories/search.repository';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 
 @NgModule({
@@ -9,6 +10,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   imports: [
     CommonModule
   ],
-  providers: [provideClientHydration(),provideAnimationsAsync()]
+  providers: [SearcherService, SearchRepository,provideHttpClient()],
 })
 export class CoreModule { }

@@ -6,9 +6,12 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon'
 import { MatFormFieldModule } from '@angular/material/form-field';
-const components = [SearcherComponent];
+import { LoaderComponent } from './components/loader/loader.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-const material = [MatAutocompleteModule, MatInputModule, MatIconModule, MatFormFieldModule];
+const components = [SearcherComponent, LoaderComponent];
+
+const material = [MatAutocompleteModule, MatInputModule, MatIconModule, MatFormFieldModule, MatProgressSpinnerModule];
 
 const modules = [
   FormsModule,
@@ -17,8 +20,8 @@ const modules = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, LoaderComponent],
   imports: [material, modules],
-  exports: [components],
+  exports: [components, modules],
 })
 export class SharedModule {}
