@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { Observable, startWith, map } from "rxjs";
+import { SearcherService } from "../../../core/services/searcher.service";
 
 
 @Component({
@@ -14,7 +15,9 @@ export class SearcherComponent {
 
   filteredResults$: Observable<string[]> = new Observable<string[]>();
 
-  constructor() {
+  constructor(
+    private _searchService: SearcherService
+  ) {
     this.initSearcher();
   }
 

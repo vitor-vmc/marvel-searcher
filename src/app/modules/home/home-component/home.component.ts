@@ -9,25 +9,17 @@ import { Subscription } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
 
   
   loading$ = this._searchService.loading$;
   error$ = this._searchService.error$;
-  character: Character[] | null = null;
+  searchResult$ = this._searchService.character$;
 
-  private _subscriptions: Subscription[] = [];
 
   constructor(private _searchService: SearcherService) { }
 
   ngOnInit(): void {
-    this._subscriptions.push(
-      this._searchService.character$.subscribe((character) => (this.character = character))
-    );
-  }
-
-  ngOnDestroy(): void {
-    this._subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
   getCharacters(): void {

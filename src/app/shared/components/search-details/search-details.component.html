@@ -1,0 +1,26 @@
+<div>
+  <span>Nome</span>
+  <span>{{ information.name }}</span>
+
+  <span>Foto</span>
+  <img [src]="information.thumbnail" alt="{{ information.name }} foto" />
+
+  <span>Descrição</span>
+  <p>{{ information.description }}</p>
+
+  <span>Participação em Filmes</span>
+  @for (serie of information.series.items; track serie.name) {
+  <span>{{ serie.name }}</span>
+  <span>{{ serie.role }}</span>
+  <span>{{ serie.type }}</span>
+  <span>{{ serie.resourceURI }}</span>
+  } @empty { Empty list of users }
+
+  <span>Participação em Filmes</span>
+  @for (serie of information.comics.items; track serie.name) {
+  <span>{{ serie.name }}</span>
+  <span>{{ serie.role }}</span>
+  <span>{{ serie.type }}</span>
+  <span>{{ serie.resourceURI }}</span>
+  } @empty { Empty list of users }
+</div>
