@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SearcherService } from '../../core/services/searcher.service';
-import { SearchDataRequest } from '../../core/interfaces/requests/search-data-request.interface';
-import { Character } from '../../core/interfaces/entities/character.interface';
+import { SearcherService } from '../../../core/services/searcher.service';
+import { SearchDataRequest } from '../../../core/interfaces/requests/search-data-request.interface';
+import { Character } from '../../../core/interfaces/entities/character.interface';
 import { Subscription } from 'rxjs';
 
 @Component({

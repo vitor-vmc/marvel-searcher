@@ -8,8 +8,10 @@ import {MatIconModule} from '@angular/material/icon'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HeaderComponent } from './components/header/header.component';
+import { GenericErrorComponent } from './components/generic-error/generic-error.component';
 
-const components = [SearcherComponent, LoaderComponent];
+const components = [HeaderComponent, SearcherComponent, LoaderComponent, GenericErrorComponent];
 
 const material = [MatAutocompleteModule, MatInputModule, MatIconModule, MatFormFieldModule, MatProgressSpinnerModule];
 
@@ -20,7 +22,7 @@ const modules = [
 ];
 
 @NgModule({
-  declarations: [components, LoaderComponent],
+  declarations: [components, LoaderComponent, HeaderComponent, GenericErrorComponent],
   imports: [material, modules],
   exports: [components, modules],
 })

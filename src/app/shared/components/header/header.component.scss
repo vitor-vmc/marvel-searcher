@@ -1,0 +1,29 @@
+.logo-container {
+    padding-top: 7px;
+    text-align: center;
+    background-color: #000000;
+  }
+  
+  .sub-logo-container {
+    border-top: 1px solid #4c4c4c;
+    background-color: #000000;
+    min-height: 4vh;
+    text-align: center;
+    color: #ffffff;
+  
+    h1 {
+      font-family: "Roboto", sans-serif;
+      letter-spacing: 0.6em;
+      padding-left: 16px;
+    }
+  }
+  
+  .logo-container img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .img {
+    width: 218px;
+  }

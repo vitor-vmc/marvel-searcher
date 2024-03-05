@@ -13,6 +13,7 @@ export class SearcherService extends SearcherStateService {
   }
 
   private handleError(error: any): Observable<never> {
+    this.loadingSubject.next(false);
     this.errorSubject.next(true);
     return throwError(
       () =>

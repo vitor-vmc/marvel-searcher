@@ -11,6 +11,10 @@ const routes: Routes = [
         path: 'home',
         loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
     },
+    {
+        path: 'histórico',
+        loadChildren: () => import('./modules/historic/historic.module').then(m => m.HistoricModule)
+    },
 ];
 
 @NgModule({
