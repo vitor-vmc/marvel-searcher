@@ -1,26 +1,48 @@
-<div>
-  <span>Nome</span>
-  <span>{{ information.name }}</span>
+<div class="details-container" *ngIf="information$ | async as information">
+  <div>
+    <mat-card class="details-card">
+      <mat-card-header class="details-card __content">
+        <mat-card-title>{{ information.name }}</mat-card-title>
+        <mat-card-subtitle>id: {{ information.id }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        class="details-image"
+        mat-card-image
+        [src]="
+          information.thumbnail.path + '.' + information.thumbnail.extension
+        "
+        alt="{{ information.name }} foto"
+      />
+      <mat-card-content class="details-card __content">
+        <p>{{ information.description }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
-  <span>Foto</span>
-  <img [src]="information.thumbnail" alt="{{ information.name }} foto" />
-
-  <span>Descrição</span>
-  <p>{{ information.description }}</p>
-
-  <span>Participação em Filmes</span>
-  @for (serie of information.series.items; track serie.name) {
-  <span>{{ serie.name }}</span>
-  <span>{{ serie.role }}</span>
-  <span>{{ serie.type }}</span>
-  <span>{{ serie.resourceURI }}</span>
-  } @empty { Empty list of users }
-
-  <span>Participação em Filmes</span>
-  @for (serie of information.comics.items; track serie.name) {
-  <span>{{ serie.name }}</span>
-  <span>{{ serie.role }}</span>
-  <span>{{ serie.type }}</span>
-  <span>{{ serie.resourceURI }}</span>
-  } @empty { Empty list of users }
-</div>
+  <mat-tab-group class="details-tabs">
+    <mat-tab label="Comics">
+      <app-list-itens
+        [listItens]="information.comics.items"
+        title="Comics"
+      ></app-list-itens>
+    </mat-tab>
+    <mat-tab label="Series">
+      <app-list-itens
+        [listItens]="information.series.items"
+        title="Series"
+      ></app-list-itens>
+    </mat-tab>
+    <mat-tab label="Stories">
+      <app-list-itens
+        [listItens]="information.stories.items"
+        title="Stories"
+      ></app-list-itens>
+    </mat-tab>
+    <mat-tab label="Events">
+      <app-list-itens
+        [listItens]="information.events.items"
+        title="Events"
+      ></app-list-itens>
+    </mat-tab>
+  <div>
+   

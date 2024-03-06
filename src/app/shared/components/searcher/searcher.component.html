@@ -1,11 +1,20 @@
 <div class="searcher-container">
   <form class="search-form __full-width">
-    <mat-form-field class="__full-width" appearance="outline">
+    <mat-form-field class="search-form __full-width" appearance="outline">
       <mat-label>Digite o nome do heroí</mat-label>
-      <input matInput
-      [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}"
-      (input)="onSearchInput()">
+      <input
+        matInput
+        [(ngModel)]="searchTerm"
+        [ngModelOptions]="{ standalone: true }"
+        (keyup.enter)="onSearchInput()"
+        [matAutocomplete]="auto"
+      />
       <mat-icon matSuffix>search</mat-icon>
+      <mat-autocomplete  #auto="matAutocomplete" (optionSelected)="onOptionSelected()">
+        @for (option of results$ | async; track option.id) {
+        <mat-option [value]="option.name">{{ option.name }}</mat-option>
+        }
+      </mat-autocomplete>
     </mat-form-field>
-</form>
+  </form>
 </div>

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearcherService } from './services/searcher.service';
+import { SearcherService } from './services/searcher/searcher.service';
 import { SearchRepository } from './repositories/search.repository';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
+import { StoreService } from './services/store/store.service';
 
 
 @NgModule({
@@ -10,6 +11,6 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
   imports: [
     CommonModule
   ],
-  providers: [SearcherService, SearchRepository,provideHttpClient()],
+  providers: [SearcherService, SearchRepository, StoreService, provideHttpClient()],
 })
 export class CoreModule { }

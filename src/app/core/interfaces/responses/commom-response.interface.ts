@@ -30,8 +30,8 @@ export interface TextObject {
 }
 
 export interface Details {
-  available: string;
-  returned: string;
+  available: number;
+  returned: number;
   collectionURI: string;
   items: Item[];
 }

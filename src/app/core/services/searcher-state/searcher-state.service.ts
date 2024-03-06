@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Character } from '../interfaces/entities/character.interface';
+import { Character } from '../../interfaces/entities/character.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class SearcherStateService {
   private _errorSubject = new BehaviorSubject<boolean>(false);
   public error$ = this._errorSubject.asObservable();
 
-  private _characterSubject = new BehaviorSubject<Character[] | null>(null);
+  private _characterSubject = new BehaviorSubject<Character | null>(null);
   character$ = this._characterSubject.asObservable();
   
   constructor() {}

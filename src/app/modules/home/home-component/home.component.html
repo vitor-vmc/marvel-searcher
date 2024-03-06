@@ -2,7 +2,7 @@
 
 <app-searcher></app-searcher>
 
-<main>
+<div>
   @if (loading$ | async) {
 
   <app-loader *ngIf="loading$ | async"></app-loader>
@@ -15,20 +15,15 @@
 
   <div *ngIf="!(loading$ | async) && !(error$ | async)" class="home-container">
     
-    @if((searchResult$ | async)?.length == null) {
+    @if((searchResult$ | async) == null) {
 
     <app-welcome-card></app-welcome-card>
 
     }@else {
-
-    <ng-container *ngIf="searchResult$ | async as searchResult">
-      <app-search-details [data]="searchResult[0]"></app-search-details>
-    </ng-container>
-    
+      <app-search-details [information$]="searchResult$"></app-search-details>
     }
   </div>
+  <app-footer></app-footer>
   }
-</main>
-
-<app-footer></app-footer>
+</div>
 

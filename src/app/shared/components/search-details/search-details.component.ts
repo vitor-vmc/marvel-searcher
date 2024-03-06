@@ -1,21 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Character } from '../../../core/interfaces/entities/character.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-details',
   templateUrl: './search-details.component.html',
   styleUrl: './search-details.component.scss'
 })
-export class SearchDetailsComponent implements OnInit{
+export class SearchDetailsComponent{
+  panelOpenState = false;
+  displayedColumns: string[] = ['name', 'uri'];
 
-  information = {} as Character;
-  @Input() data = {} as Character;
+
+  @Input() information$ = new Observable<Character | null>;
 
   constructor() {
-  }
 
-  ngOnInit(): void {
-    this.information = this.data;
   }
-
 }
