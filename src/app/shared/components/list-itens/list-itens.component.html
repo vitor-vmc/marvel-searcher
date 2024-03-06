@@ -1,21 +1,24 @@
-<div>
-  <h3>{{title}}</h3>
-  <mat-list>
-    <ng-container *ngFor="let item of dataSource">
-        <mat-list-item>
-            <span matListItemTitle>{{item.name}}</span>
-            <span matListItemLine>URI: {{item.resourceURI}}</span>
-        </mat-list-item>
-    </ng-container>
-  </mat-list>
+<mat-list>
+  <ng-container *ngFor="let item of dataSource">
+    <mat-list-item>
+     <div class="text-wrap">
+      <span  matListItemTitle>{{ item.name }}</span>
+      </div>
+      <div class="text-wrap">
+      <span  matListItemLine>URI: {{ item.resourceURI }}</span>
+     </div>
+    </mat-list-item>
+  </ng-container>
+</mat-list>
 
-  <mat-paginator #paginator
-               class="demo-paginator"
-               (page)="handlePageEvent($event)"
-               [length]="listItens.length"
-               [pageSize]="5"
-               [hidePageSize]="true"
-               [pageIndex]="pageIndex"
-               aria-label="Select page">
+<mat-paginator
+  #paginator
+  class="paginator"
+  (page)="handlePageEvent($event)"
+  [length]="listItens.length"
+  [pageSize]="pageSize"
+  [hidePageSize]="true"
+  [pageIndex]="pageIndex"
+  aria-label="Select page"
+>
 </mat-paginator>
-</div>

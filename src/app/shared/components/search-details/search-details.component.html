@@ -1,10 +1,12 @@
 <div class="details-container" *ngIf="information$ | async as information">
-  <div>
-    <mat-card class="details-card">
-      <mat-card-header class="details-card __content">
+  <div class="details-card">
+    <mat-card [appearance]="'outlined'">
+
+      <mat-card-header>
         <mat-card-title>{{ information.name }}</mat-card-title>
         <mat-card-subtitle>id: {{ information.id }}</mat-card-subtitle>
       </mat-card-header>
+
       <img
         class="details-image"
         mat-card-image
@@ -13,13 +15,18 @@
         "
         alt="{{ information.name }} foto"
       />
-      <mat-card-content class="details-card __content">
-        <p>{{ information.description }}</p>
+
+      <mat-card-content>
+        <div>
+          <h3>Description</h3>
+          <p>{{ information.description }}</p>
+        </div>
       </mat-card-content>
+
     </mat-card>
   </div>
 
-  <mat-tab-group class="details-tabs">
+  <mat-tab-group class="details-list">
     <mat-tab label="Comics">
       <app-list-itens
         [listItens]="information.comics.items"
@@ -44,5 +51,6 @@
         title="Events"
       ></app-list-itens>
     </mat-tab>
-  <div>
-   
+    <div></div
+  ></mat-tab-group>
+</div>

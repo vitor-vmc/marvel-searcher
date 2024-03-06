@@ -10,9 +10,9 @@ import { merge, startWith, switchMap, of } from 'rxjs';
 })
 export class ListItensComponent implements OnInit {
   length = 0;
-  pageSize = 5;
+  pageSize = 8;
   pageIndex = 0;
-  pageSizeOptions = [5];
+  pageSizeOptions = [8];
 
   dataSource: Item[] = [];
 
@@ -39,27 +39,17 @@ export class ListItensComponent implements OnInit {
     this.pageIndex = e.pageIndex;
   }
 
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    if (setPageSizeOptionsInput) {
-      this.pageSizeOptions = setPageSizeOptionsInput
-        .split(',')
-        .map((str) => +str);
-    }
-  }
-
   linkListToPaginator() {
-    // merge simply joins all this operators and creates an       //observable that listen to paginator page events
     merge(this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
-          // creates an obserbable of sample data
-          return of(this.listItens); // Replace 'data' with 'this.listItens' or define 'data' variable
+          return of(this.listItens);
         })
       )
       .subscribe((res) => {
-        const from = this.paginator.pageIndex * 5;
-        const to = from + 5;
+        const from = this.paginator.pageIndex * this.pageSize;
+        const to = from + this.pageSize;
         this.dataSource = res.slice(from, to);
       });
   }
