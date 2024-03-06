@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Item } from '../../../core/interfaces/responses/commom-response.interface';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-itens',
@@ -15,6 +15,8 @@ export class ListItensComponent implements OnInit{
   pageSizeOptions = [5, 10, 25];
 
   pageEvent: PageEvent = new PageEvent;
+
+
 
   @Input() listItens: Item[] = [];
   @Input() title: string = '';
