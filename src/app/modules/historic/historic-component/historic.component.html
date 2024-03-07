@@ -2,19 +2,21 @@
   <div class="container">
     <h1>Historic</h1>
 
-    @if (loading$ | async) {
-    <app-loader></app-loader>
-    } @else { @if((character$ | async) != null) {
+     @if((character$ | async) != null) {
+
     <app-search-details
       class="home-deatails-container"
       [information$]="character$"
     ></app-search-details>
+
     } @else {
+
     <app-result-list
       class="results-container"
       [isFromHistoric]="false"
     ></app-result-list>
-    } }
+
+    } 
   </div>
 </div>
 
