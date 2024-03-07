@@ -1,3 +1,23 @@
 <div>
-    <app-search-details [information$]="information$"></app-search-details>
+  <div class="container">
+    <h1>Historic</h1>
+
+     @if((character$ | async) != null) {
+
+    <app-search-details
+      class="home-deatails-container"
+      [information$]="character$"
+    ></app-search-details>
+
+    } @else {
+
+    <app-result-list
+      class="results-container"
+      [isFromHistoric]="false"
+    ></app-result-list>
+
+    } 
+  </div>
 </div>
+
+

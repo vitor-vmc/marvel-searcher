@@ -15,6 +15,9 @@ export class SearcherStateService {
 
   private _characterSubject = new BehaviorSubject<Character | null>(null);
   character$ = this._characterSubject.asObservable();
+
+  private _resultSubject = new BehaviorSubject<Character[]>([]);
+  results$ = this._resultSubject.asObservable();
   
   constructor() {}
 
@@ -37,5 +40,12 @@ export class SearcherStateService {
   }
   public set characterSubject(value) {
     this._characterSubject = value;
+  }
+
+  public get resultSubject() {
+    return this._resultSubject;
+  }
+  public set resultSubject(value) {
+    this._resultSubject = value;
   }
 }

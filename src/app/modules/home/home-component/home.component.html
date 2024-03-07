@@ -1,29 +1,31 @@
-<app-header></app-header>
-
 <app-searcher></app-searcher>
 
 <div>
   @if (loading$ | async) {
 
-  <app-loader *ngIf="loading$ | async"></app-loader>
+  <app-loader></app-loader>
 
   }@else if (error$ | async) {
 
-  <app-generic-error *ngIf="error$ | async"></app-generic-error>
+  <app-generic-error></app-generic-error>
 
   } @else {
 
-  <div *ngIf="!(loading$ | async) && !(error$ | async)" class="home-container">
+  <div class="home-container">
     
-    @if((searchResult$ | async) == null) {
+    @if((searchResult$ | async) === null) {
 
     <app-welcome-card></app-welcome-card>
 
-    }@else {
-      <app-search-details [information$]="searchResult$"></app-search-details>
+    }@else if((character$ | async) != null) {
+
+    <app-search-details class="home-deatails-container" [information$]="character$"></app-search-details>
+    
+    } @else {
+
+    <app-result-list class="results-container" [isFromHistoric]="false"></app-result-list>
+
     }
   </div>
-  <app-footer></app-footer>
   }
 </div>
-

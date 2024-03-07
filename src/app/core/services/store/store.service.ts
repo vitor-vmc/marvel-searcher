@@ -9,14 +9,11 @@ export class StoreService {
   private _characterListStoreSubject = new BehaviorSubject<Character[]>([]);
   charactersListStore$ = this._characterListStoreSubject.asObservable();
 
-  constructor() {}
+  private _historicItemSubject = new BehaviorSubject<Character | null>(null);
+  historicItemSubject$ = this._historicItemSubject.asObservable();
 
-  public get charactersListStoreSubject() {
-    return this._characterListStoreSubject;
-  }
-  public set charactersListStoreSubject(value) {
-    this._characterListStoreSubject = value;
-  }
+  constructor(
+  ) {}
 
   addCharacterToListStore(character: Character): void {
     const characterList = this._characterListStoreSubject.getValue();

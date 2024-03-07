@@ -1,7 +1,23 @@
-<header class="header {{fixed ? '__fixed' : ''}}">
-  <div class="logo-container">
-    <img class="img" src="assets/images/marvel-logo.png" alt="Logo Marvel" />
+<header class="header {{ fixed ? '__fixed' : '' }}">
+  <div class="menu-container">
+    <div class="menu-item">
+      <button class="nav-button" aria-label="access home" (click)="redirectToHome()">
+        <mat-icon aria-label="menu home icon">home</mat-icon>
+      </button>
+    </div>
+
+    <div class="logo-container">
+      <img class="img" src="assets/images/marvel-logo.png" alt="Logo Marvel" />
+    </div>
+   
+  
+    <div class="menu-item">
+      <button class="nav-button" aria-label="access historic" (click)="redirectToHistoric()">
+        <mat-icon aria-label="menu historic icon">assignment</mat-icon>
+      </button>  
+    </div>
   </div>
+
   <div class="sub-logo-container">
     <h1>SEARCHER</h1>
   </div>

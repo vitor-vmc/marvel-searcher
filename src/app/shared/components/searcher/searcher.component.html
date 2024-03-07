@@ -1,12 +1,13 @@
 <div class="searcher-container">
   <form class="search-form __full-width">
     <mat-form-field class="search-form __full-width" appearance="outline">
-      <mat-label>Digite o nome do heroí</mat-label>
+      <mat-label>Enter the hero's name</mat-label>
       <input
+        autocapitalize="none"
         matInput
         [(ngModel)]="searchTerm"
         [ngModelOptions]="{ standalone: true }"
-        (keyup.enter)="onSearchInput()"
+        (keydown.enter)="onSearchInput()"
         [matAutocomplete]="auto"
       />
       <mat-icon matSuffix>search</mat-icon>

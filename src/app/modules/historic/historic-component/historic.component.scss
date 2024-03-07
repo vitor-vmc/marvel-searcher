@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+
+    h1{
+      font-weight: bolder;
+      border-bottom: 2px solid #202020;
+    }
+  }
+  
+  .deatails-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  .results-container{
+    width: 100%;
+  }
