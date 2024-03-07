@@ -14,7 +14,7 @@ export class StoreService {
   historicItemSubject$ = this._historicItemSubject.asObservable();
 
   constructor(
-    private _localStorageService: LocalStorageService,
+    private _localStorageService: LocalStorageService
   ) {}
 
   addCharacterToListStore(character: Character): void {

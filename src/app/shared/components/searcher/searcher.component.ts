@@ -14,7 +14,6 @@ import { StoreService } from "../../../core/services/store/store.service";
 export class SearcherComponent{
   searchTerm: string = '';
   results$ = this._storeService.charactersListStore$;
-  filteredResults$: Observable<string[]> = new Observable<string[]>();
 
   constructor(
     private _searchService: SearcherService,
@@ -31,18 +30,22 @@ export class SearcherComponent{
   }
 
   onOptionSelected(): void {
-    this._searchService.getCharactersFromStore(this.searchTerm);
+    let character = this.searchTerm.valueOf();
+    this.searchTerm = '';
+    this._searchService.getCharactersFromStore(character);
   }
 
   getCharacters(name: string): void {
     console.log('getCharacters')
     const data: SearchDataRequest = {
       type: 'characters',
-      param: 'name',
+      param: 'nameStartsWith',
       value: name,
       orderBy: 'name',
       queryType: 'searchAll'
     }
+
+    this.searchTerm = '';
     this._searchService.getCharactersByParams(data);
   }
 }

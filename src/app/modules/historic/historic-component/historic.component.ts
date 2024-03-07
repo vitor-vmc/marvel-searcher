@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { of } from 'rxjs';
-import { characterMock } from '../../../core/mocks/character.mock';
+import { StoreService } from '../../../core/services/store/store.service';
+import { SearcherService } from '../../../core/services/searcher/searcher.service';
 @Component({
   selector: 'app-historic',
   templateUrl: './historic.component.html',
@@ -8,6 +8,9 @@ import { characterMock } from '../../../core/mocks/character.mock';
 })
 export class HistoricComponent {
 
-  information$ = of(characterMock);
+  loading$ = this._searcherService.loading$;
+  historicList$ = this._storeService.charactersListStore$;
+  character$ = this._storeService.historicItemSubject$;
 
+  constructor(private _storeService: StoreService, private _searcherService: SearcherService) { }
 }

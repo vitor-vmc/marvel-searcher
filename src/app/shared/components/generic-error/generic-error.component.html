@@ -1,3 +1,12 @@
-<div class="error">
-    <h1>Ops! Algo deu errado!</h1>
+
+<div role="alert">
+    <mat-card [appearance]="'outlined'">
+        <mat-card-content>
+            <div class="error">
+                <mat-icon class="icon">{{icon}}</mat-icon>
+                <h2>{{error}}</h2>
+                <p>{{message}}</p>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </div>

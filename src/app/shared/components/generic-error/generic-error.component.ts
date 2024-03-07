@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-generic-error',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './generic-error.component.scss'
 })
 export class GenericErrorComponent {
+
+
+  @Input() error: string = 'Ops! Something went wrong.';
+  @Input() message: string = 'An error occurred. Please try again later.';
+  @Input() icon: string = 'error';
 
 }
