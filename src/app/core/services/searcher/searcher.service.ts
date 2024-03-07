@@ -33,9 +33,8 @@ export class SearcherService extends SearcherStateService {
 
     this._searchRepository.getCharacters(searchData).subscribe({
       next: (response: Character[]) => {
-        console.log('response: ', response[0]);
-        this._storeService.addCharacterToListStore(response[0]);
-        this.characterSubject.next(response[0]);
+        this.characterSubject.next(null);
+        this.resultSubject.next(response); 
       },
       error: (error) => {
         this.handleError(error);
@@ -53,6 +52,21 @@ export class SearcherService extends SearcherStateService {
     if (this._storeService.checkIfCharacterExistsInListStore(name)) {
       const character = this._storeService.getCharacterFromListStore(name);
       this.characterSubject.next(character);
+    }
+
+    this.loadingSubject.next(false);
+  }
+
+  getCharacters(character: Character) {
+
+    this.loadingSubject.next(true);
+
+    if (this._storeService.checkIfCharacterExistsInListStore(character.name)) {
+      const data = this._storeService.getCharacterFromListStore(character.name);
+      this.characterSubject.next(data);
+    }else{
+      this.characterSubject.next(character);
+      this._storeService.addCharacterToListStore(character);
     }
 
     this.loadingSubject.next(false);

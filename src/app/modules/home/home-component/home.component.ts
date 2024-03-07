@@ -15,15 +15,8 @@ export class HomeComponent implements OnInit {
   searchResult$ = this._searchService.results$;
   character$ = this._searchService.character$;
 
-  constructor(private _searchService: SearcherService, private _storeService: StoreService) { }
+  constructor(private _searchService: SearcherService) { }
 
   ngOnInit(): void {
-    this.loadData();
-  }
-
-  loadData() {
-    this._storeService.charactersListStore$.subscribe((data) => {
-      console.log('aaaaaaa', data);
-    });
   }
 }

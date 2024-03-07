@@ -11,8 +11,10 @@ import { Observable } from 'rxjs';
 })
 export class ResultListComponent {
 
+  results$ = this._searchService.results$;
+  sharedResults$ = this._searchService.results$;
+
   @Input() isFromHistoric: boolean = false;
-  @Input() results$ = new Observable<Character[]>()
 
   constructor(
     private _searchService: SearcherService, private _storeService: StoreService
@@ -20,7 +22,7 @@ export class ResultListComponent {
   }
 
   redirectToDetails(character: Character) {
-    this._searchService.getCharactersFromStore(character.name);
+    this._searchService.getCharacters(character);
   }
 
   redirectToHistoricDetails(character: Character) {

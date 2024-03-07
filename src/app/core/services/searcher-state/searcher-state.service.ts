@@ -41,4 +41,11 @@ export class SearcherStateService {
   public set characterSubject(value) {
     this._characterSubject = value;
   }
+
+  public get resultSubject() {
+    return this._resultSubject;
+  }
+  public set resultSubject(value) {
+    this._resultSubject = value;
+  }
 }

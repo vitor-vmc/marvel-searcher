@@ -4,7 +4,6 @@ import { SearcherService } from './services/searcher/searcher.service';
 import { SearchRepository } from './repositories/search.repository';
 import { provideHttpClient } from '@angular/common/http';
 import { StoreService } from './services/store/store.service';
-import { LocalStorageService } from './services/local-storage/local-storage.service';
 
 
 @NgModule({
@@ -12,6 +11,6 @@ import { LocalStorageService } from './services/local-storage/local-storage.serv
   imports: [
     CommonModule
   ],
-  providers: [SearcherService, SearchRepository, StoreService,LocalStorageService, provideHttpClient()],
+  providers: [SearcherService, SearchRepository, StoreService, provideHttpClient()],
 })
 export class CoreModule { }

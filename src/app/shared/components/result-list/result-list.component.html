@@ -1,33 +1,54 @@
-<div class="result-list-container">
-<ng-container  *ngIf="results$ | async as resultsFromStore">
-  <ng-container
-    *ngIf="resultsFromStore.length > 0; else noResultsFromStoreTemplate"
-  >
-    <ng-container *ngFor="let result of resultsFromStore">
-      <mat-card class="result-list-card" [appearance]="'outlined'">
-        <mat-card-header>
-          <img
-            mat-card-avatar
-            [src]="result.thumbnail.path + '.' + result.thumbnail.extension"
-            alt="{{ result.name }}"
-          />
-          <mat-card-title> {{ result.name }}</mat-card-title>
-          <mat-card-subtitle>id: {{ result.id }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-          <button mat-button (click)="redirectToDetails(result)">
-            Details
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </ng-container>
-  </ng-container>
-  <ng-template #noResultsFromStoreTemplate>
-    <app-generic-error
-      [error]="'Ops!'"
-      [message]="'No results found.'"
-      [icon]="'search'"
-    ></app-generic-error>
-  </ng-template>
-</ng-container>
+@if(isFromHistoric){
+
+<div class="result-list-container" *ngIf="results$ | async as results">
+  @if(results.length > 0){ @for (result of results; track $index) {
+  <mat-card class="result-list-card" [appearance]="'outlined'">
+    <mat-card-header>
+      <img
+        mat-card-avatar
+        [src]="result.thumbnail.path + '.' + result.thumbnail.extension"
+        alt="{{ result.name }}"
+      />
+      <mat-card-title> {{ result.name }}</mat-card-title>
+      <mat-card-subtitle>id: {{ result.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button (click)="redirectToDetails(result)">Details</button>
+    </mat-card-actions>
+  </mat-card>
+  } }@else {
+  <app-generic-error
+    [error]="'Ops!'"
+    [message]="'No results found.'"
+    [icon]="'search'"
+  ></app-generic-error>
+  }
 </div>
+
+}@else {
+<div class="result-list-container" *ngIf="sharedResults$ | async as results">
+  @if(results.length > 0){ @for (result of results; track $index) {
+  <mat-card class="result-list-card" [appearance]="'outlined'">
+    <mat-card-header>
+      <img
+        mat-card-avatar
+        [src]="result.thumbnail.path + '.' + result.thumbnail.extension"
+        alt="{{ result.name }}"
+      />
+      <mat-card-title> {{ result.name }}</mat-card-title>
+      <mat-card-subtitle>id: {{ result.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button (click)="redirectToDetails(result)">Details</button>
+    </mat-card-actions>
+  </mat-card>
+  } }@else {
+  <app-generic-error
+    [error]="'Ops!'"
+    [message]="'No results found.'"
+    [icon]="'search'"
+  ></app-generic-error>
+  }
+</div>
+
+}
