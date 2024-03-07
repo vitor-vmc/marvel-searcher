@@ -21,7 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 import { ListItensComponent } from './components/list-itens/list-itens.component';
 import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import { ResultListComponent } from './components/result-list/result-list.component';
 
 const components = [
   HeaderComponent,
@@ -32,6 +32,7 @@ const components = [
   SearchDetailsComponent,
   FooterComponent,
   ListItensComponent,
+  ResultListComponent
 ];
 
 const material = [
@@ -53,14 +54,7 @@ const modules = [FormsModule, ReactiveFormsModule, CommonModule];
 
 @NgModule({
   declarations: [
-    components,
-    LoaderComponent,
-    HeaderComponent,
-    GenericErrorComponent,
-    WelcomeCardComponent,
-    SearchDetailsComponent,
-    FooterComponent,
-    ListItensComponent,
+    components
   ],
   imports: [material, modules],
   exports: [components, modules],

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Character } from '../../interfaces/entities/character.interface';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,14 +10,12 @@ export class StoreService {
   private _characterListStoreSubject = new BehaviorSubject<Character[]>([]);
   charactersListStore$ = this._characterListStoreSubject.asObservable();
 
-  constructor() {}
+  private _historicItemSubject = new BehaviorSubject<Character | null>(null);
+  historicItemSubject$ = this._historicItemSubject.asObservable();
 
-  public get charactersListStoreSubject() {
-    return this._characterListStoreSubject;
-  }
-  public set charactersListStoreSubject(value) {
-    this._characterListStoreSubject = value;
-  }
+  constructor(
+    private _localStorageService: LocalStorageService,
+  ) {}
 
   addCharacterToListStore(character: Character): void {
     const characterList = this._characterListStoreSubject.getValue();
@@ -25,6 +24,7 @@ export class StoreService {
       return;
     }
     const updatedList = [...characterList, character];
+    this._localStorageService.setItem('historic', updatedList);
     this._characterListStoreSubject.next(updatedList);
   }
 
@@ -37,5 +37,17 @@ export class StoreService {
   getCharacterFromListStore(name: string): Character {
     const characterList = this._characterListStoreSubject.getValue();
     return characterList.find(c => c.name === name) as Character;
+  }
+
+  setHistoricItem(id: number): void {
+    const characterList = this._localStorageService.getItem('historic') as Character[];
+
+    if (!characterList) {
+      this._historicItemSubject.next(null);
+      return;
+    }
+
+    const character = characterList.find(c => c.id === id) as Character;
+    this._historicItemSubject.next(character);
   }
 }
